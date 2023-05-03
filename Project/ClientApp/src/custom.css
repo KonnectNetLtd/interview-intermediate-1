@@ -1,0 +1,13 @@
+/* Provide sufficient contrast against white background */
+body {
+    background-color: #ededed;
+}
+
+.highlight-on-hover:hover {
+    background-color: lightyellow;
+    cursor: pointer
+}
+
+.highlight-on-hover.active {
+    background-color: lightyellow;
+}
