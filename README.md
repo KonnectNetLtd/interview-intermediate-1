@@ -1,9 +1,15 @@
 # interview-intermediate-1
 Technical Interview - Challenge 1 for Intermediate Dev candidates
 
-This application is written using .NET 6 and React and uses SQLite as the DB.
-It is a badly-written program that does NOT follow best coding practices.
+This project is about a car-racing event called "SpeedFest".
 
+The "home" page of the app displays the 10 participating teams. You can also see the drivers and their lap times by clicking on one of the teams.
+The "reports" page is empty on purpose, and we will discuss it further in the next interview.
+
+The application is written using .NET 6, React and SQLite as the DB.
+Please ensure you have appropriate .NET SDK and nodeJS version installed in your machine.
+
+It is a badly-written program that does NOT follow best coding practices and might contain bugs.
 Your task is to improve this application in whichever ways you see fit,
 i.e. you are allowed to introduce new nuget / npm libraries if you want.
 
@@ -14,8 +20,7 @@ If you can think of any other improvements that you did not end up implementing,
 
 You don't need to send the application back to us, just make sure it's ready before the next interview.
 
-In the next session, you will be asked to share your screen. 
-We will:
+In the next session, you will need to share your screen, and we will:
 - discuss the improvements that you've made to the application
 - ask you to implement a couple of new features in the application
 - ask you several technical questions related to our tech stack (.NET, React, SQL)
