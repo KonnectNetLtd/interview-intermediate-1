@@ -36,22 +36,8 @@ namespace Project.Controllers
         [HttpGet("reports/")]
         public async Task<IEnumerable<object>> GetReports()
         {
-            await using var connection = new SqliteConnection(DbUtils.ConnectionString());
-            await connection.OpenAsync();
-
-            var command = connection.CreateCommand();
-            command.CommandText = "select 1";
-
-            var result = new List<object>();
-            await using var reader = await command.ExecuteReaderAsync();
-            while (reader.Read())
-                result.Add(new RacingDriver
-                {
-                    Id = reader.GetInt32(0),
-                    Name = reader.GetString(2)
-                });
-
-            return result;
+            // we will discuss about this method further in the technical interview
+            throw new NotImplementedException();
         }
     }
 }

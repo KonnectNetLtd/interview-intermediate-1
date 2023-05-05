@@ -29,8 +29,11 @@ export class Home extends Component {
         const response = await fetch(`personnel/teams/${teamId}/drivers`);
         const drivers = await response.json();
         this.setState({ drivers: drivers, loadingCount: this.state.loadingCount-1 }, () => {
-            this.setState({ loadingCount: this.state.loadingCount+this.state.drivers.length });
-            this.state.drivers.forEach(async d => await this.fetchTimes(d.id));
+            this.setState({ loadingCount: this.state.loadingCount+1 });
+            const fetchTimesPromises = [];
+            this.state.drivers.forEach(d => fetchTimesPromises.push(this.fetchTimes(d.id)));
+            Promise.all(fetchTimesPromises)
+                .then(() => this.setState({ loadingCount: this.state.loadingCount-1 }));
         });
     }
     
@@ -39,7 +42,6 @@ export class Home extends Component {
         const lapTimes = await response.json();
         
         this.setState({
-            loadingCount: this.state.loadingCount-1,
             lapTimes: {
                 ...this.state.lapTimes, 
                 [driverId]: lapTimes
@@ -62,7 +64,7 @@ export class Home extends Component {
                                 <thead>
                                     <tr>
                                         <th scope='col'>Name</th>
-                                        <th scope='col'>Team Principal</th>
+                                        <th scope='col'>Team Principal Name</th>
                                         <th scope='col' width='10%'></th>
                                     </tr>
                                 </thead>
@@ -126,7 +128,7 @@ export class Home extends Component {
     }
 
     renderLoadingSpinner() {
-        if (this.state.loadingCount <= 0)
+        if (this.state.loadingCount === 0)
             return null;
         
         return (
